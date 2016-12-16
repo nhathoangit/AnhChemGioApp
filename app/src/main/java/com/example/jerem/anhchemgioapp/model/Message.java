@@ -9,6 +9,9 @@ public class Message {
     private int time;
     private String userID;
 
+    public Message() {
+    }
+
     public Message(String content, int time, String userID) {
         this.content = content;
         this.time = time;

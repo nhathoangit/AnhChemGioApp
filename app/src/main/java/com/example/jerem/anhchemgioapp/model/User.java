@@ -10,6 +10,9 @@ public class User {
     private boolean status;
     private String avatar;
 
+    public User() {
+    }
+
     public User(String displayName, String email, boolean status, String avatar) {
         this.displayName = displayName;
         this.email = email;

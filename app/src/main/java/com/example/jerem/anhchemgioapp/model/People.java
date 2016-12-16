@@ -8,6 +8,9 @@ public class People {
     private String userID;
     private boolean status;
 
+    public People() {
+    }
+
     public People(String userID, boolean status) {
         this.userID = userID;
         this.status = status;

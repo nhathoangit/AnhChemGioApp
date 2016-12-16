@@ -25,21 +25,24 @@
           android:layout_marginBottom="25dp"
           android:layout_gravity="center_horizontal" />
 
+      <!-- Email Label -->
       <android.support.design.widget.TextInputLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="8dp"
           android:layout_marginBottom="8dp">
 
-          <EditText android:id="@+id/input_name"
+          <EditText android:id="@+id/edtName"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="@drawable/inputbox"
               android:padding="15dp"
-              android:inputType="textCapWords"
+              android:inputType="textEmailAddress"
               android:hint="Name" />
 
       </android.support.design.widget.TextInputLayout>
+
+
 
       <!-- Email Label -->
       <android.support.design.widget.TextInputLayout
@@ -48,7 +51,7 @@
           android:layout_marginTop="8dp"
           android:layout_marginBottom="8dp">
 
-          <EditText android:id="@+id/input_email"
+          <EditText android:id="@+id/edtEmail"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="@drawable/inputbox"
@@ -65,7 +68,7 @@
           android:layout_marginTop="8dp"
           android:layout_marginBottom="8dp">
 
-          <EditText android:id="@+id/input_password"
+          <EditText android:id="@+id/edtPassword"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="@drawable/inputbox"
@@ -77,10 +80,10 @@
 
       <!-- Signup Button -->
       <android.support.v7.widget.AppCompatButton
-          android:id="@+id/btn_signup"
+          android:id="@+id/btnSignup"
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
-          android:padding="12dp"
+          android:padding="30dp"
           android:background="@drawable/button_signup" />
 
       <TextView android:id="@+id/link_login"
@@ -88,6 +91,6 @@
           android:layout_height="wrap_content"
           android:text="Already a member? Login"
           android:gravity="center"
-          android:textSize="16dip"/>
+          android:textSize="20dp"/>
   </LinearLayout>
 </RelativeLayout>

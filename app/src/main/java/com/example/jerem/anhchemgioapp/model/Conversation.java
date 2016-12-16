@@ -9,6 +9,9 @@ public class Conversation {
     private People people;
     private Message message;
 
+    public Conversation() {
+    }
+
     public Conversation(String name, People people, Message message) {
         this.name = name;
         this.people = people;
