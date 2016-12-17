@@ -1,21 +1,23 @@
 package com.example.jerem.anhchemgioapp.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by jerem on 05/12/2016.
  */
 
 public class Conversation {
     private String name;
-    private People people;
-    private Message message;
+    private ArrayList<People> peoples;
+    private ArrayList<Message> messages;
 
     public Conversation() {
     }
 
-    public Conversation(String name, People people, Message message) {
+    public Conversation(String name, ArrayList<People> peoples, ArrayList<Message> messages) {
         this.name = name;
-        this.people = people;
-        this.message = message;
+        this.peoples = peoples;
+        this.messages = messages;
     }
 
     public String getName() {
@@ -26,19 +28,19 @@ public class Conversation {
         this.name = name;
     }
 
-    public People getPeople() {
-        return people;
+    public ArrayList<People> getPeoples() {
+        return peoples;
     }
 
-    public void setPeople(People people) {
-        this.people = people;
+    public void setPeoples(ArrayList<People> peoples) {
+        this.peoples = peoples;
     }
 
-    public Message getMessage() {
-        return message;
+    public ArrayList<Message> getMessages() {
+        return messages;
     }
 
-    public void setMessage(Message message) {
-        this.message = message;
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
     }
 }
