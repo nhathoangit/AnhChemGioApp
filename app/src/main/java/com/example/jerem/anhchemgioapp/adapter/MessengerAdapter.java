@@ -38,6 +38,7 @@ public class MessengerAdapter extends FirebaseRecyclerAdapter<Message,MessengerA
     @Override
     protected void populateViewHolder(MessengerHolder viewHolder, Message model, int position) {
         viewHolder.tvMessage.setText(model.getContent());
+        viewHolder.tvSender.setText(model.getUserID());
     }
 
     @Override

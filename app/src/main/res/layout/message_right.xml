@@ -32,7 +32,7 @@
             android:layout_alignParentLeft="true"
             android:paddingBottom="6dp"
             android:paddingLeft="2dp"
-            android:text="31/12/2016"
+            android:text="10:20 31/12/2016"
             android:textColor="@color/sinch_purple"
             android:textSize="12sp" />
 
@@ -49,11 +49,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:paddingRight="12dp"
+                android:paddingRight="20dp"
                 android:text="Hello, how are you?"
                 android:textColor="@android:color/white"
-                android:textSize="14sp" />
-
+                android:textSize="18sp" />
         </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

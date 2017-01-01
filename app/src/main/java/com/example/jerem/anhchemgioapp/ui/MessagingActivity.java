@@ -34,6 +34,8 @@ public class MessagingActivity extends BaseAuthActivity {
     Button btnSend;
     @BindView(R.id.edtMessageBodyField)
     EditText edtMessageBodyField;
+
+    private LinearLayoutManager linearLayoutManager;
 //    @BindView(R.id.listMessages)
 //    ListView lvMessage;
 
@@ -61,17 +63,20 @@ public class MessagingActivity extends BaseAuthActivity {
 
     @OnClick(R.id.btnSend)
     public void onClick() {
-        Message message = MakeMessage(edtMessageBodyField.getText().toString(), fUser.getUid());
+        Message message = MakeMessage(edtMessageBodyField.getText().toString(), fUser.getEmail());
         root.child("conversations").child(convID).child("messages").push().setValue(message);
         edtMessageBodyField.setText("");
+        linearLayoutManager.setStackFromEnd(true);
     }
 
 
     private void Init() {
         listMessages.setHasFixedSize(true);
-        listMessages.setLayoutManager(new LinearLayoutManager(this));
+        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setStackFromEnd(true);
+        listMessages.setLayoutManager(linearLayoutManager);
         dbMessages = root.child("conversations").child(convID).child("messages");
-        adapter = new MessengerAdapter(Message.class, MessengerAdapter.MessengerHolder.class, dbMessages, fUser.getUid());
+        adapter = new MessengerAdapter(Message.class, MessengerAdapter.MessengerHolder.class, dbMessages, fUser.getEmail());
         listMessages.setAdapter(adapter);
     }
 
