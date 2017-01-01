@@ -11,7 +11,7 @@
         android:layout_marginRight="10dp">
 
         <TextView
-            android:id="@+id/txtSender"
+            android:id="@+id/tvSender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -25,7 +25,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtDate"
+            android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/txtSender"
@@ -45,7 +45,7 @@
             android:padding="12dp">
 
             <TextView
-                android:id="@+id/txtMessage"
+                android:id="@+id/tvMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="12dp"

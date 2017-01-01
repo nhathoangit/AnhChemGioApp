@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context="com.example.jerem.anhchemgioapp.ui.MessagingActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -21,7 +22,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/listMessages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +32,7 @@
         android:padding="0dip"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll"
-        tools:listitem="@layout/message_left" />
+        tools:listitem="@layout/message_right" />
 
     <RelativeLayout
         android:id="@+id/divider"
@@ -71,6 +72,5 @@
             android:layout_margin="4dp"
             android:background="@drawable/button_send" />
     </RelativeLayout>
-
 
 </RelativeLayout>

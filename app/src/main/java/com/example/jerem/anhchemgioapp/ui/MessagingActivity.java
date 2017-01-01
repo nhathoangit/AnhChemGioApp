@@ -1,40 +1,41 @@
 package com.example.jerem.anhchemgioapp.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.jerem.anhchemgioapp.R;
+import com.example.jerem.anhchemgioapp.adapter.MessengerAdapter;
 import com.example.jerem.anhchemgioapp.model.Message;
-import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MessagingActivity extends BaseAuthActivity {
 
+    @BindView(R.id.listMessages)
+    RecyclerView listMessages;
     private String convID;
     private DatabaseReference root, dbMessages;
-    private FirebaseListAdapter<Message> arrayAdapter;
-    private ArrayList<Message> listMessage;
+    private FirebaseUser fUser;
+    //    private FirebaseListAdapter<Message> arrayAdapter;
+//    private ArrayList<Message> listMessage;
+    private MessengerAdapter adapter;
     @BindView(R.id.btnSend)
     Button btnSend;
     @BindView(R.id.edtMessageBodyField)
     EditText edtMessageBodyField;
-    @BindView(R.id.listMessages)
-    ListView lvMessage;
+//    @BindView(R.id.listMessages)
+//    ListView lvMessage;
 
     @Override
     int getContentView() {
@@ -44,41 +45,34 @@ public class MessagingActivity extends BaseAuthActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        //Khai bao database
+        root = FirebaseDatabase.getInstance().getReference();
+        fUser = FirebaseAuth.getInstance().getCurrentUser();
+
         Intent intent = getIntent();
         if (intent == null) this.finish();
         convID = intent.getStringExtra("convID");
+
         Init();
-        //Toast.makeText(this, convID, Toast.LENGTH_SHORT).show();
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Message message = MakeMessage(edtMessageBodyField.getText().toString(), "ThuanNguyen");
-                root.child("conversations").child(convID).child("messages").push().setValue(message);
-                edtMessageBodyField.setText("");
-            }
-        });
+    }
+
+    @OnClick(R.id.btnSend)
+    public void onClick() {
+        Message message = MakeMessage(edtMessageBodyField.getText().toString(), fUser.getUid());
+        root.child("conversations").child(convID).child("messages").push().setValue(message);
+        edtMessageBodyField.setText("");
     }
 
 
     private void Init() {
-        root = FirebaseDatabase.getInstance().getReference();
+        listMessages.setHasFixedSize(true);
+        listMessages.setLayoutManager(new LinearLayoutManager(this));
         dbMessages = root.child("conversations").child(convID).child("messages");
-        listMessage = new ArrayList<Message>();
-        //arrayAdapter = new ArrayAdapter<Message>(this,android.R.layout.simple_list_item_1,listMessage);
-        arrayAdapter = new FirebaseListAdapter<Message>(this, Message.class, R.layout.message_left, dbMessages) {
-            @Override
-            protected void populateView(View v, Message model, int position) {
-                Context context = getApplicationContext();
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                if(model.getUserID()=="ThuanNguyen")
-                    v = inflater.inflate(R.layout.message_right,null);
-                ((TextView)v.findViewById(R.id.txtMessage)).setText(model.getContent());
-            }
-        };
-        lvMessage.setAdapter(arrayAdapter);
+        adapter = new MessengerAdapter(Message.class, MessengerAdapter.MessengerHolder.class, dbMessages, fUser.getUid());
+        listMessages.setAdapter(adapter);
     }
 
     private Message MakeMessage(String content, String userId) {
@@ -88,6 +82,7 @@ public class MessagingActivity extends BaseAuthActivity {
         //TODO: Add Time and UserId
         return message;
     }
+
     @Override
     void onAuthentication(FirebaseAuth firebaseAuth) {
 
@@ -128,4 +123,5 @@ public class MessagingActivity extends BaseAuthActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -11,7 +11,7 @@
         android:layout_marginLeft="10dp">
 
         <TextView
-            android:id="@+id/txtSender"
+            android:id="@+id/tvSender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -25,10 +25,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtDate"
+            android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/txtSender"
+            android:layout_alignBottom="@+id/tvSender"
             android:layout_alignParentLeft="true"
             android:paddingBottom="6dp"
             android:paddingLeft="2dp"
@@ -40,12 +40,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/txtSender"
+            android:layout_below="@+id/tvSender"
             android:background="@drawable/purple_bubble"
             android:padding="12dp">
 
             <TextView
-                android:id="@+id/txtMessage"
+                android:id="@+id/tvMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
