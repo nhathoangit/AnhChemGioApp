@@ -1,14 +1,23 @@
 package com.example.jerem.anhchemgioapp.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.jerem.anhchemgioapp.R;
 import com.example.jerem.anhchemgioapp.model.Conversation;
-import com.example.jerem.anhchemgioapp.model.Message;
+import com.example.jerem.anhchemgioapp.ui.MessagingActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * Created by jerem on 15/12/2016.
@@ -31,23 +40,28 @@ public class GroupAdapter extends FirebaseRecyclerAdapter<Conversation,GroupAdap
     @Override
     protected void populateViewHolder(GroupHolder viewHolder, Conversation model, int position) {
         viewHolder.tvTitle.setText(model.getName());
-        if(model.getMessages().size() > 0){
-            Message latestMessage = model.getMessages().get(model.getMessages().size()-1);
-            viewHolder.tvMessage.setText( latestMessage.getContent());
-            viewHolder.tvTime.setText(latestMessage.getTime());
-        }
+//        if(model.getMessages().size() > 0){
+//            Message latestMessage = model.getMessages().get(model.getMessages().size()-1);
+//            viewHolder.tvMessage.setText( latestMessage.getContent());
+//            viewHolder.tvTime.setText((CharSequence) ServerValue.TIMESTAMP);
+//        }
+
     }
 
-    public static class GroupHolder extends RecyclerView.ViewHolder {
+    public static class GroupHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView tvTitle;
         private final TextView tvMessage;
         private final TextView tvTime;
+        private Context ctx;
 
         public GroupHolder(View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             tvMessage = (TextView) itemView.findViewById(R.id.tvMessage);
             tvTime = (TextView) itemView.findViewById(R.id.tvTime);
+
+            ctx = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
 
         public void setGroupTitle(String title) {
@@ -62,6 +76,33 @@ public class GroupAdapter extends FirebaseRecyclerAdapter<Conversation,GroupAdap
             tvTime.setText(time);
         }
 
+        @Override
+        public void onClick(View view) {
+            final ArrayList<Conversation> conversation = new ArrayList<>();
+            final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("conversations");
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        conversation.add(snapshot.getValue(Conversation.class));
+                    }
+
+                    Conversation con = conversation.get(getLayoutPosition());
+//                    Toast.makeText(ctx, con.getConversationID(), Toast.LENGTH_SHORT).show();
+                    int itemPosition = getLayoutPosition();
+                    Intent intent = new Intent(ctx, MessagingActivity.class);
+                    intent.putExtra("convID", con.getConversationID());
+//                    intent.putExtra("position", itemPosition + "");
+//                    intent.putExtra("restaurants", Parcels.wrap(restaurants));
+                    ctx.startActivity(intent);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        }
     }
 }
 
