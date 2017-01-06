@@ -76,6 +76,7 @@ public class MainActivity extends BaseAuthActivity{
                 final Conversation conversation = new Conversation();
                 final Map<String, User> people = new HashMap<String, User>();
                 conversation.setName(titleName);
+                conversation.setLastMessage("");
                 conversation.setPeoples(people);
                 fUser.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -85,7 +86,6 @@ public class MainActivity extends BaseAuthActivity{
                         String key = root.child("conversations").push().getKey();
                         conversation.setConversationID(key);
                         root.child("conversations").child(key).setValue(conversation);
-
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {

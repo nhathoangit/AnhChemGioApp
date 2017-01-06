@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -65,6 +67,8 @@ public class MessagingActivity extends BaseAuthActivity {
     public void onClick() {
         Message message = MakeMessage(edtMessageBodyField.getText().toString(), fUser.getEmail());
         root.child("conversations").child(convID).child("messages").push().setValue(message);
+        root.child("conversations").child(convID).child("lastMessage").setValue(message.getContent());
+        root.child("conversations").child(convID).child("time").setValue(new Date().getTime());
         edtMessageBodyField.setText("");
         linearLayoutManager.setStackFromEnd(true);
     }
@@ -81,10 +85,7 @@ public class MessagingActivity extends BaseAuthActivity {
     }
 
     private Message MakeMessage(String content, String userId) {
-        Message message = new Message();
-        message.setContent(content);
-        message.setUserID(userId);
-        //TODO: Add Time and UserId
+        Message message = new Message(content,userId);
         return message;
     }
 

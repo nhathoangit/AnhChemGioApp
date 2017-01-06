@@ -1,6 +1,7 @@
 package com.example.jerem.anhchemgioapp.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class MessengerAdapter extends FirebaseRecyclerAdapter<Message,MessengerA
     protected void populateViewHolder(MessengerHolder viewHolder, Message model, int position) {
         viewHolder.tvMessage.setText(model.getContent());
         viewHolder.tvSender.setText(model.getUserID());
+        viewHolder.tvDate.setText(DateFormat.format("dd-MM-yyyy {HH:mm:ss}",model.getTime()));
     }
 
     @Override
