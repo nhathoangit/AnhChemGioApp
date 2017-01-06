@@ -3,6 +3,7 @@ package com.example.jerem.anhchemgioapp.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,6 +41,8 @@ public class GroupAdapter extends FirebaseRecyclerAdapter<Conversation,GroupAdap
     @Override
     protected void populateViewHolder(GroupHolder viewHolder, Conversation model, int position) {
         viewHolder.tvTitle.setText(model.getName());
+        viewHolder.tvTime.setText(DateFormat.format("dd-MM-yyyy {HH:mm:ss}",model.getTime()));
+        viewHolder.tvMessage.setText(model.getLastMessage());
 //        if(model.getMessages().size() > 0){
 //            Message latestMessage = model.getMessages().get(model.getMessages().size()-1);
 //            viewHolder.tvMessage.setText( latestMessage.getContent());

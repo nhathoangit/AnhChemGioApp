@@ -1,5 +1,6 @@
 package com.example.jerem.anhchemgioapp.model;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -9,16 +10,21 @@ import java.util.Map;
 public class Conversation {
     private String conversationID;
     private String name;
+    private String lastMessage;
+    private long time;
     private Map<String,User> peoples;
     private Map<String, Message> messages;
-
-    public Conversation() {
-    }
 
     public Conversation(String name, Map<String, User> peoples, Map<String, Message> messages) {
         this.name = name;
         this.peoples = peoples;
         this.messages = messages;
+        this.lastMessage = "";
+        this.time =  new Date().getTime();
+    }
+
+    public Conversation() {
+        this.time = new Date().getTime();
     }
 
     public Conversation(String conversationID) {
@@ -31,6 +37,14 @@ public class Conversation {
 
     public void setConversationID(String conversationID) {
         this.conversationID = conversationID;
+    }
+
+    public String getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(String lastMessage) {
+        this.lastMessage = lastMessage;
     }
 
     public String getName() {
@@ -55,5 +69,14 @@ public class Conversation {
 
     public void setMessages(Map<String, Message> messages) {
         this.messages = messages;
+    }
+
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
     }
 }

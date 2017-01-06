@@ -1,22 +1,20 @@
 package com.example.jerem.anhchemgioapp.model;
-
-import java.sql.Timestamp;
-
+import java.util.Date;
 /**
  * Created by jerem on 05/12/2016.
  */
 
 public class Message {
     private String content;
-    private Timestamp time;
+    private long time;
     private String userID;
 
     public Message() {
     }
 
-    public Message(String content, Timestamp time, String userID) {
+    public Message(String content, String userID) {
         this.content = content;
-        this.time = time;
+        this.time = new Date().getTime();
         this.userID = userID;
     }
 
@@ -28,11 +26,11 @@ public class Message {
         this.content = content;
     }
 
-    public Timestamp getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(Timestamp time) {
+    public void setTime(long time) {
         this.time = time;
     }
 
