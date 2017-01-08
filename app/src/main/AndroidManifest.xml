@@ -33,7 +33,8 @@
             android:theme="@style/AppTheme.TransparentToolBar" />
         <activity
             android:name=".ui.MessagingActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ui.UsersActivity"></activity>
     </application>
 
 </manifest>

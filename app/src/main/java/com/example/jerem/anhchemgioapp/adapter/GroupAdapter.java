@@ -48,7 +48,6 @@ public class GroupAdapter extends FirebaseRecyclerAdapter<Conversation,GroupAdap
 //            viewHolder.tvMessage.setText( latestMessage.getContent());
 //            viewHolder.tvTime.setText((CharSequence) ServerValue.TIMESTAMP);
 //        }
-
     }
 
     public static class GroupHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -96,6 +95,7 @@ public class GroupAdapter extends FirebaseRecyclerAdapter<Conversation,GroupAdap
                     int itemPosition = getLayoutPosition();
                     Intent intent = new Intent(ctx, MessagingActivity.class);
                     intent.putExtra("convID", con.getConversationID());
+                    intent.putExtra("title",con.getName());
 //                    intent.putExtra("position", itemPosition + "");
 //                    intent.putExtra("restaurants", Parcels.wrap(restaurants));
                     ctx.startActivity(intent);

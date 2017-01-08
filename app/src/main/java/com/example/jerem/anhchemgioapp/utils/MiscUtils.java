@@ -20,6 +20,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by jerem on 07/12/2016.
@@ -208,6 +210,13 @@ public class MiscUtils {
         }
         builder.setCancelable(cancelable);
         builder.show();
+    }
+
+    public static boolean isValidEmail(String enteredEmail){
+        String EMAIL_REGIX = "^[\\\\w!#$%&’*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(EMAIL_REGIX);
+        Matcher matcher = pattern.matcher(enteredEmail);
+        return ((!enteredEmail.isEmpty()) && (enteredEmail!=null) && (matcher.matches()));
     }
 
     /**

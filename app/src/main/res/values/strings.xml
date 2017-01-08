@@ -10,4 +10,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="message_elipses">Message...</string>
     <string name="logout">Logout</string>
+
+    <string name="action_profile_members">Danh sách thành viên</string>
+    <string name="action_add_member">Thêm thành viên</string>
 </resources>

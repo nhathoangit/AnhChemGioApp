@@ -102,14 +102,22 @@ public class MainActivity extends BaseAuthActivity{
         });
     }
 
+
+
     @Override
     void onAuthentication(FirebaseAuth firebaseAuth) {
+
         //Recycler
+        final DatabaseReference groupRef = root.child("conversations");
+
+        //.........................
+
+        //......................
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        DatabaseReference groupRef = root.child("conversations");
         adapter = new GroupAdapter(Conversation.class, R.layout.group_chat_list, GroupAdapter.GroupHolder.class, groupRef);
         recyclerView.setAdapter(adapter);
+
     }
 
 

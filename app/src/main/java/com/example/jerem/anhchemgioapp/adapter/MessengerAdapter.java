@@ -41,6 +41,16 @@ public class MessengerAdapter extends FirebaseRecyclerAdapter<Message,MessengerA
         viewHolder.tvMessage.setText(model.getContent());
         viewHolder.tvSender.setText(model.getUserID());
         viewHolder.tvDate.setText(DateFormat.format("dd-MM-yyyy {HH:mm:ss}",model.getTime()));
+        if(position != 0){
+            Message topMessage = getItem(position-1);
+            if(topMessage != null){
+                if(topMessage.getUserID().equals(model.getUserID())){
+                    viewHolder.tvSender.setVisibility(View.GONE);
+                }else{
+                    viewHolder.tvSender.setVisibility(View.VISIBLE);
+                }
+            }
+        }
     }
 
     @Override

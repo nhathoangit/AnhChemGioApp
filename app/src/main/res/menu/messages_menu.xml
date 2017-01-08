@@ -8,9 +8,15 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_profile"
+        android:id="@+id/action_add_member"
         android:orderInCategory="100"
-        android:title="@string/action_profile"
+        android:title="@string/action_add_member"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_profile_members"
+        android:orderInCategory="100"
+        android:title="@string/action_profile_members"
         app:showAsAction="never" />
 
     <item
