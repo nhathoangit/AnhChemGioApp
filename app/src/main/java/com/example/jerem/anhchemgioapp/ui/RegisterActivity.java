@@ -56,12 +56,14 @@ public class RegisterActivity extends BaseAuthActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnSignup:
+                //kiểm tra Email nhập rồi hay chưa
                 if (TextUtils.isEmpty(edtEmail.getText())) {
-                    Toast.makeText(this, "Vui lòng nhập username", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Vui lòng nhập username", Toast.LENGTH_LONG).show();
                     return;
                 }
+                //kiểm tra pass đã nhập rồi hay chưa
                 if (TextUtils.isEmpty(edtPassword.getText())) {
-                    Toast.makeText(this, "Vui lòng nhập password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Vui lòng nhập password", Toast.LENGTH_LONG).show();
                     return;
                 }
                 MiscUtils.showProcessDialog(this, "Đang đăng ký", "Hệ thống đang xử lý đăng ký, vui lòng chờ", true);
