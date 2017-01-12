@@ -133,7 +133,7 @@ public class MessagingActivity extends BaseAuthActivity {
                                         root.child("conversations").child(convID).setValue(conversation).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
-                                                Toast.makeText(MessagingActivity.this, "Da them " + edtAdd.getText().toString() + " vao nhom!!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(MessagingActivity.this, "Đã thêm " + edtAdd.getText().toString() + " vào nhóm!!", Toast.LENGTH_SHORT).show();
                                             }
                                         });
                                         _flag = false;
@@ -141,7 +141,7 @@ public class MessagingActivity extends BaseAuthActivity {
                                     }
 
                                 } else {
-                                    Toast.makeText(MessagingActivity.this, "Rat tiec, " + edtAdd.getText().toString() + " khong ton tai!!!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MessagingActivity.this, "Rất tiếc, " + edtAdd.getText().toString() + " không tồn tại!!!", Toast.LENGTH_SHORT).show();
                                 }
                                 if (progressDialog.isShowing())
                                     progressDialog.dismiss();
@@ -149,7 +149,7 @@ public class MessagingActivity extends BaseAuthActivity {
 
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
-                                Toast.makeText(MessagingActivity.this, "Da co loi xay ra, vui long thu lai", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MessagingActivity.this, "Đã có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
                                 if (progressDialog.isShowing())
                                     progressDialog.dismiss();
                             }
@@ -159,7 +159,7 @@ public class MessagingActivity extends BaseAuthActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(MessagingActivity.this, "Da co loi xay ra, vui long thu lai", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MessagingActivity.this, "Đã có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();
                     }

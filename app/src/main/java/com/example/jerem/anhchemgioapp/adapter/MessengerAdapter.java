@@ -31,8 +31,8 @@ public class MessengerAdapter extends FirebaseRecyclerAdapter<Message,MessengerA
     private static final int LEFT_MSG = 1;
     private String userID;
 
-    public MessengerAdapter(Class modelClass, Class viewHolderClass, Query ref, String userID) {
-        super(modelClass, R.layout.message_left, viewHolderClass, ref);
+    public MessengerAdapter(Class modelClass, Class viewHolderClass, Query query, String userID) {
+        super(modelClass, R.layout.message_left, viewHolderClass, query);
         this.userID = userID;
     }
 
