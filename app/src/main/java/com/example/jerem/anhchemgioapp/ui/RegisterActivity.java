@@ -1,4 +1,4 @@
-package com.example.jerem.anhchemgioapp.ui;
+﻿package com.example.jerem.anhchemgioapp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,7 +56,7 @@ public class RegisterActivity extends BaseAuthActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnSignup:
-                //kiểm tra Email nhập rồi hay chưa
+                //kiểm tra Email đã nhập rồi hay chưa
                 if (TextUtils.isEmpty(edtEmail.getText())) {
                     Toast.makeText(this, "Vui lòng nhập username", Toast.LENGTH_LONG).show();
                     return;
@@ -78,7 +78,7 @@ public class RegisterActivity extends BaseAuthActivity {
                                             Toast.makeText(RegisterActivity.this, "Email không đúng định dạng", Toast.LENGTH_SHORT).show();
                                             break;
                                         case "ERROR_EMAIL_ALREADY_IN_USE":
-                                            Toast.makeText(RegisterActivity.this, "Email đã bị sử dụng bởi người khác", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegisterActivity.this, "Email đã được sử dụng bởi người khác", Toast.LENGTH_SHORT).show();
                                             break;
                                         default:
                                             Toast.makeText(RegisterActivity.this, "Đã có lỗi xảy ra, vui lòng đăng nhập lại", Toast.LENGTH_SHORT).show();
