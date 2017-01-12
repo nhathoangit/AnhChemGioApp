@@ -1,4 +1,4 @@
-package com.example.jerem.anhchemgioapp.ui;
+﻿package com.example.jerem.anhchemgioapp.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -120,7 +120,7 @@ public class ProfileActivity extends BaseAuthActivity {
                         user.setStatus(true);
                         rootFire.child(fUser.getUid()).setValue(user);
                         Toast.makeText(ProfileActivity.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-                        //Lát về xem chỗ này
+                        
                         ProfileActivity.this.finish();
                     }
 
