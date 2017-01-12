@@ -1,4 +1,4 @@
-package com.example.jerem.anhchemgioapp.ui;
+﻿package com.example.jerem.anhchemgioapp.ui;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -110,7 +110,7 @@ public class MessagingActivity extends BaseAuthActivity {
 
         final EditText edtAdd = (EditText) dialogView.findViewById(R.id.edtAdd);
         final Map<String, User> people = new HashMap<String, User>();
-
+	//thêm thành viên vào nhóm chat
         dialogBuilder.setTitle("Add member");
         dialogBuilder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -146,7 +146,7 @@ public class MessagingActivity extends BaseAuthActivity {
                                 if (progressDialog.isShowing())
                                     progressDialog.dismiss();
                             }
-
+				
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                                 Toast.makeText(MessagingActivity.this, "Đã có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
